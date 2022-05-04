@@ -1,8 +1,0 @@
-
-Feature: Ebay Website Handling
-
-Scenario: Ordering a mobile phone
-
-Given I am on Ebay Home Page
-When I order a product
-Then my order is placed successfully
