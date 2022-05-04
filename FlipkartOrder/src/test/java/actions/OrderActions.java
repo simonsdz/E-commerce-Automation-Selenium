@@ -14,12 +14,12 @@ public class OrderActions {
 		this.driver = cs.getDriver();
 		elements = new OrderElements(driver);
 	}
-	
+	//Enter your flipkart login credentials
 	public void enterMobileNumber() {
-		elements.mobileNumber.sendKeys("7358747596");
+		elements.mobileNumber.sendKeys("12345678");
 	}
 	public void enterPassword() {
-		elements.password.sendKeys("simosri1831");
+		elements.password.sendKeys("********");
 	}
 	public void clickLogin() {
 		elements.loginButton.click();
