@@ -34,13 +34,10 @@ public class StepDefinitions {
 		common_actions.goToUrl(flipkartPageUrl);
 		Thread.sleep(1000);
 		//enter the credentials to login
-		//driver.findElement(By.cssSelector("input[class='_2IX_2- VJZDxU']")).sendKeys("7358747596");
 		order_actions.enterMobileNumber();
 		Thread.sleep(1000);
-		//driver.findElement(By.xpath("//input[@type='password']")).sendKeys("simosri1831");
 		order_actions.enterPassword();
 		Thread.sleep(1000);
-		//driver.findElement(By.xpath("//button[@type='submit']//span[contains(text(),'Login')]")).click();
 		order_actions.clickLogin();
 		Thread.sleep(3000);
 	}
@@ -48,15 +45,12 @@ public class StepDefinitions {
 	@When("I order a product")
 	public void i_order_a_product() throws Exception {
 		//search for iphone 12 in search box
-		//driver.findElement(By.xpath("//input[@placeholder='Search for products, brands and more']")).sendKeys("iphone 12 blue");
 		order_actions.enterMobileInSearchBox();
 		Thread.sleep(1000);
 		//click search button
-		//driver.findElement(By.xpath("//button[@type='submit']")).click();
 		order_actions.clickSearch();
 		Thread.sleep(1000);
 		//click the 1st mobile
-		//driver.findElement(By.xpath("//div[normalize-space()='APPLE iPhone 12 (Blue, 64 GB)']")).click();
 		order_actions.clickDesiredMobile();
 		Thread.sleep(1000);
 		
@@ -65,20 +59,16 @@ public class StepDefinitions {
 		driver.switchTo().window(list.get(1));
 		
 		//enter pincode
-		//driver.findElement(By.xpath("//input[@id='pincodeInputId']")).sendKeys("603202");
 		order_actions.enterPincode();
 		Thread.sleep(1000);
 		//click check
-		//driver.findElement(By.cssSelector("._2P_LDn")).click();
 		order_actions.clickCheck();
 		Thread.sleep(1000);
 		
 		//add to cart
-		//driver.findElement(By.xpath("//button[normalize-space()='ADD TO CART']")).click();
 		order_actions.clickAddToCart();
 		Thread.sleep(1000);
 		//proceed to checkout
-		//driver.findElement(By.cssSelector("._2KpZ6l._2ObVJD._3AWRsL")).click();
 		order_actions.clickCheckout();
 		Thread.sleep(1000);
 	}
