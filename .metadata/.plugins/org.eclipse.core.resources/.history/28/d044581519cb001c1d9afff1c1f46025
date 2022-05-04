@@ -1,0 +1,65 @@
+package steps;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class StepDefinitions {
+
+	WebDriver driver;
+	
+	public StepDefinitions(CommonSteps cs) {
+		this.driver = cs.getDriver();
+	}
+	
+	@Given("I am on Ebay Home Page")
+	public void i_am_on_Ebay_Home_Page() throws Exception {
+		driver.get("https://www.amazon.in/");
+		//click sign in
+		driver.findElement(By.cssSelector("#nav-link-accountList-nav-line-1")).click();
+		//enter mobile number
+		driver.findElement(By.xpath("//input[@id='ap_email']")).sendKeys("7358747596");
+		driver.findElement(By.xpath("//input[@id='continue']")).click();
+		//enter password
+		driver.findElement(By.xpath("//input[@id='ap_password']")).sendKeys("simosri1831");
+		driver.findElement(By.xpath("//input[@id='signInSubmit']")).click();
+		
+	}
+
+	@When("I order a product")
+	public void i_order_a_product() throws Exception {
+		//search for iphone 12 in search box
+		driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']")).sendKeys("iphone 12");
+		//click search button
+		driver.findElement(By.xpath("//input[@id='nav-search-submit-button']")).click();
+		//click the 1st mobile
+		driver.findElement(By.xpath("//span[normalize-space()='Apple iPhone 12 (64GB) - White']")).click();
+		
+		Set<String> windows = driver.getWindowHandles();
+		List<String> list = new ArrayList(windows);
+		driver.switchTo().window(list.get(1));
+		
+		//add to cart
+		driver.findElement(By.xpath("//input[@id='add-to-cart-button']")).click();
+		//proceed to checkout
+		driver.findElement(By.xpath("//input[@name='proceedToRetailCheckout']")).click();
+	}
+
+	@Then("my order is placed successfully")
+	public void my_order_is_placed_successfully() {
+		String paymentPage = "https://pay.ebay.com/rgxo?action=view&sessionid=1311003991";
+		if(paymentPage.equals(driver.getCurrentUrl())) {
+			System.out.println("Reached the checkout page successfully");
+		}
+	}
+}
